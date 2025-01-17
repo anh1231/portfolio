@@ -98,3 +98,39 @@ h1 h2 h3 h4 h5 h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
+
+.res_heading{
+  display: contents;
+}
+
+
+section.res_main {
+  display: contents;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1rem; /* Add spacing between grid items */
+  margin: 0 auto; /* Center the grid within its container */
+  padding: 1rem; /* Add padding around the grid */
+  max-width: 100%; /* Ensure it doesn’t overflow the page */
+}
+
+article.res_para {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 1em;
+  border-left: 2px solid hsla(0, 0%, 20%, 0.5); /* Left vertical line */
+  border-right: 2px solid hsla(0, 0%, 20%, 0.5); /* Right vertical line */
+  padding: 0.5rem; /* Adds space inside the borders */
+  margin: 1rem 0; /* Adds space outside the element */
+  background-color: #ffffff; /* Optional: Adds a background color */
+  max-width: 400px; /* Optional: Limits the box width */
+}
+
+p.skills {
+  font-style: italic;
+}
+
+.contact {
+  text-decoration: none;
+}
