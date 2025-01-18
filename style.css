@@ -106,7 +106,6 @@ h1, h2, h3, h4, h5, h6{
 
 
 section.res_main {
-  display: contents;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   gap: 1rem; /* Add spacing between grid items */
@@ -134,4 +133,7 @@ p.skills {
 
 .contact {
   text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
 }
