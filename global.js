@@ -5,7 +5,7 @@ function $$(selector, context = document) {
 }
 
  let navLinks = $$("nav a");
- 
+
  let currentLink = navLinks.find(
     (a) => a.host === location.host && a.pathname === location.pathname
   );
@@ -19,7 +19,8 @@ function $$(selector, context = document) {
     { url: '', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
     { url: 'contact/', title: 'Contact'},
-    { url: 'resume/', title: 'Resume'}
+    { url: 'resume/', title: 'Resume'},
+    {url: 'https://github.com/anh1231', title: 'Github'}
   ];
 
   let nav = document.createElement('nav');
