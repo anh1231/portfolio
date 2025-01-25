@@ -56,3 +56,9 @@ function $$(selector, context = document) {
           </select>
       </label>`
   );
+
+  const select = document.querySelector('select');
+  select.addEventListener('input', function (event) {
+    console.log('color scheme changed to', event.target.value);
+    document.documentElement.style.setProperty('color-scheme', event.target.value);
+  });
