@@ -124,7 +124,6 @@ article.res_para {
   border-right: 2px solid hsla(0, 0%, 20%, 0.5); /* Right vertical line */
   padding: 0.5rem; /* Adds space inside the borders */
   margin: 1rem 0; /* Adds space outside the element */
-  background-color: #ffffff; /* Optional: Adds a background color */
   max-width: 400px; /* Optional: Limits the box width */
 }
 
