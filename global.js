@@ -57,8 +57,31 @@ function $$(selector, context = document) {
       </label>`
   );
 
-  const select = document.querySelector('select');
-  select.addEventListener('input', function (event) {
-    console.log('color scheme changed to', event.target.value);
-    document.documentElement.style.setProperty('color-scheme', event.target.value);
+  document.addEventListener('DOMContentLoaded', () => {
+    // Reference the <select> element
+    const select = document.querySelector('#theme-selector');
+  
+    // Check for a saved preference in localStorage
+    if ('colorScheme' in localStorage) {
+      const savedScheme = localStorage.colorScheme;
+  
+      // Apply the saved preference
+      document.documentElement.style.setProperty('color-scheme', savedScheme);
+  
+      // Update the <select> element to match
+      select.value = savedScheme;
+    }
+  
+    // Add the event listener to handle user changes
+    select.addEventListener('input', function (event) {
+      const newScheme = event.target.value;
+  
+      // Apply the color scheme
+      document.documentElement.style.setProperty('color-scheme', newScheme);
+  
+      // Save the user preference
+      localStorage.colorScheme = newScheme;
+    });
   });
+  
+  
