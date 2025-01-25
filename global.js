@@ -32,6 +32,15 @@ function $$(selector, context = document) {
         url = '../' + url;
       }
     let title = p.title;
-    nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+    let a = document.createElement('a');
+    a.href = url;
+    a.textContent = title;
+    if (a.host === location.host && a.pathname === location.pathname) {
+        a.classList.add('current');
+      }
+    if (a.host !== location.host && a.pathname === location.pathname) {
+        a.target = "_blank";
+      }
+    nav.append(a);
   }
   
