@@ -98,4 +98,28 @@ function $$(selector, context = document) {
     });
   });
   
+  document.addEventListener('DOMContentLoaded', () => {
+    // Get a reference to the form
+    const form = document.querySelector('#contact-form');
+  
+    // Attach a submit event listener if the form exists
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault(); // Prevent the default submission behavior
+  
+      // Create a FormData object from the form
+      const data = new FormData(form);
+  
+      // Build the mailto: URL
+      let url = form.action + '?';
+      for (let [name, value] of data) {
+        url += `${encodeURIComponent(name)}=${encodeURIComponent(value)}&`;
+      }
+  
+      // Remove the trailing "&"
+      url = url.slice(0, -1);
+  
+      // Open the mailto: URL
+      location.href = url;
+    });
+  });
   
