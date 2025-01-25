@@ -44,7 +44,7 @@ function $$(selector, context = document) {
     a.textContent = title;
   
     // Highlight the current page
-    if (a.host === location.host && a.pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '')) {
+    if (a.host === location.host && a.pathname === location.pathname) {
       a.classList.add('current');
     }
   
