@@ -34,8 +34,8 @@ function $$(selector, context = document) {
   
     // Adjust relative URLs for non-home pages
     if (!ARE_WE_HOME && !url.startsWith('http')) {
-      url = new URL(url, location.origin + location.pathname).href;
-    }
+        url = '../' + url;
+      }
   
     let title = p.title;
     let a = document.createElement('a');
