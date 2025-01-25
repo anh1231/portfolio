@@ -56,11 +56,10 @@ function $$(selector, context = document) {
           </select>
       </label>`
   );
-  
-  const select = document.querySelector('#theme-selector');
+
   document.addEventListener('DOMContentLoaded', () => {
     // Reference the <select> element
-    
+    const select = document.querySelector('select');
   
     // Check for a saved preference in localStorage
     if ('colorScheme' in localStorage) {
