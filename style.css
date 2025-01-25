@@ -142,3 +142,16 @@ p.skills {
 html {
   color-scheme: light dark;
 }
+
+label.color-scheme {
+  position: absolute; /* Take the element out of the normal document flow */
+  top: 1rem;          /* Distance from the top of the document */
+  right: 1rem;        /* Distance from the right of the document */
+  font-size: 80%;     /* Make the font a little smaller */
+  font-family: inherit; /* Ensure it inherits the parent’s font-family */
+  z-index: 10; 
+}
+
+label.color-scheme select {
+  font-family: inherit; /* Make the dropdown use the same font as the rest of the page */
+}
