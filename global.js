@@ -27,7 +27,7 @@ function $$(selector, context = document) {
   nav.append(ul);
   document.body.prepend(nav);
   
-  const ARE_WE_HOME = location.pathname === '/' || location.pathname === '/index.html';
+  const ARE_WE_HOME = document.documentElement.classList.contains('home');
   
   for (let p of pages) {
     let url = p.url;
@@ -43,9 +43,9 @@ function $$(selector, context = document) {
     a.textContent = title;
   
     // Highlight the current page
-    if (a.host === location.host && a.pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '')) {
-      a.classList.add('current');
-    }
+    if (a.host === location.host && a.pathname === location.pathname) {
+        a.classList.add('current');
+      }
   
     // Open external links in a new tab
     if (a.host !== location.host) {
