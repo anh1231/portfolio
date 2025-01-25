@@ -38,7 +38,7 @@ function $$(selector, context = document) {
     if (a.host === location.host && a.pathname === location.pathname) {
         a.classList.add('current');
       }
-    if (a.host !== location.host && a.pathname === location.pathname) {
+    if (a.host !== location.host) {
         a.target = "_blank";
       }
     nav.append(a);
