@@ -15,7 +15,7 @@ function $$(selector, context = document) {
   }
 
   let pages = [
-    { url: '/', title: 'Home' },
+    { url: '', title: 'Home' },
     { url: 'resume/', title: 'CV' },
     { url: 'projects/', title: 'Projects' },
     { url: 'contact/', title: 'Contact' },
@@ -27,15 +27,16 @@ function $$(selector, context = document) {
   nav.append(ul);
   document.body.prepend(nav);
   
+  const BASE_PATH = '/repo-name/'; // Replace with your repository name or '/' if in root
   const ARE_WE_HOME = location.pathname === '/' || location.pathname === '/index.html';
   
   for (let p of pages) {
     let url = p.url;
   
-    // Adjust relative URLs for non-home pages
+    // Adjust URLs for non-home pages
     if (!ARE_WE_HOME && !url.startsWith('http')) {
-        url = '../' + url;
-      }
+      url = new URL(BASE_PATH + url, location.origin).href;
+    }
   
     let title = p.title;
     let a = document.createElement('a');
@@ -43,9 +44,9 @@ function $$(selector, context = document) {
     a.textContent = title;
   
     // Highlight the current page
-    if (a.host === location.host && a.pathname === location.pathname) {
-        a.classList.add('current');
-      }
+    if (a.host === location.host && a.pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '')) {
+      a.classList.add('current');
+    }
   
     // Open external links in a new tab
     if (a.host !== location.host) {
@@ -56,6 +57,7 @@ function $$(selector, context = document) {
     li.append(a);
     ul.append(li);
   }
+  
   
   
   document.body.insertAdjacentHTML(
