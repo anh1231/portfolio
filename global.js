@@ -27,7 +27,7 @@ function $$(selector, context = document) {
   nav.append(ul);
   document.body.prepend(nav);
   
-  const ARE_WE_HOME = document.documentElement.classList.contains('home');
+  const ARE_WE_HOME = location.pathname === '/' || location.pathname === '/index.html';
   
   for (let p of pages) {
     let url = p.url;
