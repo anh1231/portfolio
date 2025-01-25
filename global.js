@@ -14,35 +14,49 @@ function $$(selector, context = document) {
     currentLink.classList.add('current');
   }
 
- let pages = [
+  let pages = [
     { url: 'index.html', title: 'Home' },
-    { url: 'resume/index.html', title: 'CV'},
+    { url: 'resume/index.html', title: 'CV' },
     { url: 'projects/index.html', title: 'Projects' },
-    { url: 'contact/index.html', title: 'Contact'},
-    { url: 'https://github.com/anh1231', title: 'Github'}
+    { url: 'contact/index.html', title: 'Contact' },
+    { url: 'https://github.com/anh1231', title: 'Github' },
   ];
-
+  
   let nav = document.createElement('nav');
+  let ul = document.createElement('ul');
+  nav.append(ul);
   document.body.prepend(nav);
   
+  const ARE_WE_HOME = location.pathname === '/' || location.pathname === '/index.html';
+  
   for (let p of pages) {
-    const ARE_WE_HOME = document.documentElement.classList.contains('home');
     let url = p.url;
+  
+    // Adjust relative URLs for non-home pages
     if (!ARE_WE_HOME && !url.startsWith('http')) {
-        url = '../' + url;
-      }
+      url = new URL(url, location.origin + location.pathname).href;
+    }
+  
     let title = p.title;
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
-    if (a.host === location.host && a.pathname === location.pathname) {
-        a.classList.add('current');
-      }
+  
+    // Highlight the current page
+    if (a.host === location.host && a.pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '')) {
+      a.classList.add('current');
+    }
+  
+    // Open external links in a new tab
     if (a.host !== location.host) {
-        a.target = "_blank";
-      }
-    nav.append(a);
+      a.target = '_blank';
+    }
+  
+    let li = document.createElement('li');
+    li.append(a);
+    ul.append(li);
   }
+  
   
   document.body.insertAdjacentHTML(
     'afterbegin',
