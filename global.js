@@ -20,7 +20,7 @@ function $$(selector, context = document) {
     { url: 'projects/', title: 'Projects' },
     { url: 'contact/', title: 'Contact'},
     { url: 'resume/', title: 'Resume'},
-    {url: 'https://github.com/anh1231', title: 'Github'}
+    { url: 'https://github.com/anh1231', title: 'Github'}
   ];
 
   let nav = document.createElement('nav');
