@@ -27,7 +27,7 @@ function $$(selector, context = document) {
   nav.append(ul);
   document.body.prepend(nav);
   
-  const BASE_PATH = '/repo-name/'; // Replace with your repository name or '/' if in root
+  const BASE_PATH = '/'; // Replace with your repository name or '/' if in root
   const ARE_WE_HOME = location.pathname === '/' || location.pathname === '/index.html';
   
   for (let p of pages) {
