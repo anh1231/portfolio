@@ -35,7 +35,7 @@ function $$(selector, context = document) {
   
     // Adjust URLs for non-home pages
     if (!ARE_WE_HOME && !url.startsWith('http')) {
-      url = new URL(BASE_PATH + url, location.origin).href;
+      url = '../' + url
     }
   
     let title = p.title;
