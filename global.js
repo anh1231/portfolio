@@ -16,9 +16,9 @@ function $$(selector, context = document) {
 
  let pages = [
     { url: '/', title: 'Home' },
+    { url: 'resume/', title: 'Resume'},
     { url: 'projects/', title: 'Projects' },
     { url: 'contact/', title: 'Contact'},
-    { url: 'resume/', title: 'Resume'},
     { url: 'https://github.com/anh1231', title: 'Github'}
   ];
 
