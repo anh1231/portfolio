@@ -13,6 +13,7 @@ nav ul li {
   display: contents; /* Removes box model styling */
 }
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
   display: flex;
   gap: 1rem;
 }
@@ -136,4 +137,8 @@ p.skills {
   &:hover{
     text-decoration: underline;
   }
+}
+
+html {
+  color-scheme: light dark;
 }
