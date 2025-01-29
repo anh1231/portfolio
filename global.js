@@ -15,7 +15,7 @@ function $$(selector, context = document) {
   }
 
   let pages = [
-    { url: '../index.html', title: 'Home' },
+    { url: '/index.html', title: 'Home' },
     { url: 'resume/index.html', title: 'CV' },
     { url: 'projects/index.html', title: 'Projects' },
     { url: 'contact/index.html', title: 'Contact' },
@@ -30,11 +30,11 @@ document.body.prepend(nav);
 
 // Step 4: Loop through the pages array and create navigation links
 for (let p of pages) {
-  let url = '../' + p.url;
+  let url = p.url;
   let title = p.title;
   
   // Adjust URL if we're not on the home page and the URL is relative
-  
+  url = !ARE_WE_HOME ? '../' + url : url;
 
   // Create a link element
   let a = document.createElement('a');
