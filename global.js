@@ -15,13 +15,13 @@ function $$(selector, context = document) {
   }
 
   let pages = [
-    { url: 'portfolio/index.html', title: 'Home' },
+    { url: '/', title: 'Home' },
     { url: 'resume/index.html', title: 'CV' },
     { url: 'projects/index.html', title: 'Projects' },
     { url: 'contact/index.html', title: 'Contact' },
     { url: 'https://github.com/anh1231', title: 'Github' },
   ];
-  
+
   const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
 // Step 3: Create the <nav> element and prepend it to the <body>
@@ -32,7 +32,7 @@ document.body.prepend(nav);
 for (let p of pages) {
   let url = p.url;
   let title = p.title;
-
+  
   // Adjust URL if we're not on the home page and the URL is relative
   url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
 
