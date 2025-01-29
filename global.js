@@ -15,48 +15,30 @@ function $$(selector, context = document) {
   }
 
   let pages = [
-    { url: 'anh1231.github.io/portfolio', title: 'Home' },
-    { url: 'anh1231.github.io/portfolio/resume', title: 'CV' },
-    { url: 'anh1231.github.io/portfolio/projects', title: 'Projects' },
-    { url: 'anh1231.github.io/portfolio/contact', title: 'Contact' },
+    { url: '', title: 'Home' },
+    { url: 'resume/', title: 'CV' },
+    { url: 'projects/', title: 'Projects' },
+    { url: 'contact/', title: 'Contact' },
     { url: 'https://github.com/anh1231', title: 'Github' },
   ];
   
-  let nav = document.createElement('nav');
-  let ul = document.createElement('ul');
-  nav.append(ul);
-  document.body.prepend(nav);
-  
-  const BASE_PATH = '/'; // Replace with your repository name or '/' if in root
-  const ARE_WE_HOME = location.pathname === '/' || location.pathname === '/index.html';
-  
-  for (let p of pages) {
-    let url = p.url;
-  
-    // Adjust URLs for non-home pages
-    if (!ARE_WE_HOME && !url.startsWith('http')) {
-      url = '../' + url
-    }
-  
-    let title = p.title;
-    let a = document.createElement('a');
-    a.href = url;
-    a.textContent = title;
-  
-    // Highlight the current page
-    if (a.host === location.host && a.pathname === location.pathname) {
-      a.classList.add('current');
-    }
-  
-    // Open external links in a new tab
-    if (a.host !== location.host) {
-      a.target = '_blank';
-    }
-  
-    let li = document.createElement('li');
-    li.append(a);
-    ul.append(li);
-  }
+  const ARE_WE_HOME = document.documentElement.classList.contains('home');
+
+// Step 3: Create the <nav> element and prepend it to the <body>
+let nav = document.createElement('nav');
+document.body.prepend(nav);
+
+// Step 4: Loop through the pages array and create navigation links
+for (let p of pages) {
+  let url = p.url;
+  let title = p.title;
+
+  // Adjust URL if we're not on the home page and the URL is relative
+  url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
+
+  // Create the link and add it to the navigation menu
+  nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+}
   
   
   
