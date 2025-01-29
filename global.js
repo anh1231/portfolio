@@ -34,7 +34,8 @@ for (let p of pages) {
   let title = p.title;
   
   // Adjust URL if we're not on the home page and the URL is relative
-  url = !ARE_WE_HOME ? '../' + url : url;
+  url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
+
   // Create a link element
   let a = document.createElement('a');
   a.href = url;
