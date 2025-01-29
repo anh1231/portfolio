@@ -36,8 +36,24 @@ for (let p of pages) {
   // Adjust URL if we're not on the home page and the URL is relative
   url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
 
-  // Create the link and add it to the navigation menu
-  nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+  // Create a link element
+  let a = document.createElement('a');
+  a.href = url;
+  a.textContent = title;
+
+  // Highlight the current page
+  a.classList.toggle(
+    'current',
+    a.host === location.host && a.pathname === location.pathname
+  );
+
+  // Open external links in a new tab
+  if (a.host !== location.host) {
+    a.target = '_blank';
+  }
+
+  // Append the link to the navigation menu
+  nav.append(a);
 }
   
   
