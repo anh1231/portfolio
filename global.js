@@ -15,10 +15,10 @@ function $$(selector, context = document) {
   }
 
   let pages = [
-    { url: '/', title: 'Home' },
-    { url: 'resume/index.html', title: 'CV' },
-    { url: 'projects/index.html', title: 'Projects' },
-    { url: 'contact/index.html', title: 'Contact' },
+    { url: 'portfolio/index.html', title: 'Home' },
+    { url: 'portfolio/resume/index.html', title: 'CV' },
+    { url: 'portfolio/projects/index.html', title: 'Projects' },
+    { url: 'portfolio.contact/index.html', title: 'Contact' },
     { url: 'https://github.com/anh1231', title: 'Github' },
   ];
 
@@ -34,7 +34,6 @@ for (let p of pages) {
   let title = p.title;
   
   // Adjust URL if we're not on the home page and the URL is relative
-  url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
 
   // Create a link element
   let a = document.createElement('a');
