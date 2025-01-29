@@ -15,10 +15,10 @@ function $$(selector, context = document) {
   }
 
   let pages = [
-    { url: '', title: 'Home' },
-    { url: '../resume', title: 'CV' },
-    { url: '../projects', title: 'Projects' },
-    { url: '../contact', title: 'Contact' },
+    { url: 'anh1231.github.io/portfolio', title: 'Home' },
+    { url: 'anh1231.github.io/portfolio/resume', title: 'CV' },
+    { url: 'anh1231.github.io/portfolio/projects', title: 'Projects' },
+    { url: 'anh1231.github.io/portfolio/contact', title: 'Contact' },
     { url: 'https://github.com/anh1231', title: 'Github' },
   ];
   
