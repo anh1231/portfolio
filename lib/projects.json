@@ -7,7 +7,7 @@
     },
     {
         "title": "DSC 106 Project 2 (Deceptive)",
-        "image": "../Images/Proj2d.png",
+        "image": "Images/Proj2d.png",
         "year": "2025",
         "description": "This came from health data collected from vitaldb and shows a deceptive visualization of the distribution of the age of cancer patients separated by sex."
     },
