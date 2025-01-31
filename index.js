@@ -10,6 +10,7 @@ if (profileStats && githubData) {
 
     profileStats.innerHTML = `
           <dl>
+            <h4>GitHub Stats</h4>
             <dt>Public Repos:</dt><dd>${githubData.public_repos}</dd>
             <dt>Public Gists:</dt><dd>${githubData.public_gists}</dd>
             <dt>Followers:</dt><dd>${githubData.followers}</dd>
