@@ -9,12 +9,12 @@ if (profileStats && githubData) {
     profileStats.style.display = 'block';
 
     profileStats.innerHTML = `
-          <dl>
+          <dl class="stats-grid">
             <h4 class="stats">GitHub Stats</h4>
-            <dt>Public Repos:</dt><dd>${githubData.public_repos}</dd>
-            <dt>Public Gists:</dt><dd>${githubData.public_gists}</dd>
-            <dt>Followers:</dt><dd>${githubData.followers}</dd>
-            <dt>Following:</dt><dd>${githubData.following}</dd>
+            <dt class="stats-head">Public Repos:</dt><dd class="stats-text">${githubData.public_repos}</dd>
+            <dt class="stats-head">Public Gists:</dt><dd class="stats-text">${githubData.public_gists}</dd>
+            <dt class="stats-head">Followers:</dt><dd class="stats-text">${githubData.followers}</dd>
+            <dt class="stats-head">Following:</dt><dd class="stats-text">${githubData.following}</dd>
           </dl>
       `;
   }

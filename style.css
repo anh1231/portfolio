@@ -178,20 +178,21 @@ label.color-scheme select {
 }
 
 /* Titles (dt) on first row */
-.stats-grid dt {
+.stats-head {
   font-weight: bold;
-  grid-row: 1;
+  grid-row: 2;
 }
 
 /* Values (dd) on second row */
-.stats-grid dd {
-  grid-row: 2;
+.stats-text {
+  grid-row: 3;
   margin: 0;
   font-size: 1.2em;
 }
 
 .stats {
   /* Underline the title */
+  grid-row: 1;
   text-decoration: underline;
 }
 
