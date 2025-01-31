@@ -7,7 +7,7 @@ const githubData = await fetchGitHubData('anh1231');
 const profileStats = document.querySelector('#profile-stats');
 if (profileStats && githubData) {
     profileStats.style.display = 'block';
-    
+
     profileStats.innerHTML = `
           <dl>
             <dt>Public Repos:</dt><dd>${githubData.public_repos}</dd>
