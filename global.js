@@ -164,13 +164,16 @@ for (let p of project) {
 
   // Create article element
   const article = document.createElement('article');
-
-  // Define article content dynamically
-  article.innerHTML = `
+  if (ARE_WE_HOME) {article.innerHTML = `
       <${headingLevel}>${p.title}</${headingLevel}>
       <img src="${p.image}" alt="${p.title}" loading="lazy" class="project-image">
-      <p>${p.description}</p>
-  `;
+      <p>${p.description}</p>`;}
+  
+      article.innerHTML = `
+      <${headingLevel}>${p.title}</${headingLevel}>
+      <img src="../${p.image}" alt="${p.title}" loading="lazy" class="project-image">
+      <p>${p.description}</p>`;
+  
 
   // Append article to container
   containerElement.appendChild(article);
