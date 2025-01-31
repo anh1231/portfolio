@@ -19,7 +19,7 @@ function $$(selector, context = document) {
     { url: 'resume/index.html', title: 'CV' },
     { url: 'projects/index.html', title: 'Projects' },
     { url: 'contact/index.html', title: 'Contact' },
-    { url: 'github.com/anh1231/portfolio', title: 'Github' },
+    { url: 'https://github.com/anh1231/portfolio', title: 'Github' },
   ];
 
   const ARE_WE_HOME = document.documentElement.classList.contains('home');
@@ -34,7 +34,7 @@ for (let p of pages) {
   let title = p.title;
   
   // Adjust URL if we're not on the home page and the URL is relative
-  url = !ARE_WE_HOME ? '../' + url : url;
+  url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
 
   // Create a link element
   let a = document.createElement('a');
