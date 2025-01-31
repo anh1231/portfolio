@@ -19,7 +19,7 @@ function $$(selector, context = document) {
     { url: 'resume/index.html', title: 'CV' },
     { url: 'projects/index.html', title: 'Projects' },
     { url: 'contact/index.html', title: 'Contact' },
-    { url: 'https://github.com/anh1231', title: 'Github' },
+    { url: 'https://github.com/anh1231/portfolio', title: 'Github' },
   ];
 
   const ARE_WE_HOME = document.documentElement.classList.contains('home');
