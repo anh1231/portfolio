@@ -189,3 +189,8 @@ label.color-scheme select {
   margin: 0;
   font-size: 1.2em;
 }
+
+.project-image {
+  width: 275px;
+  height: 150px;
+}

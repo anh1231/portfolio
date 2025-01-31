@@ -168,7 +168,7 @@ for (let p of project) {
   // Define article content dynamically
   article.innerHTML = `
       <${headingLevel}>${p.title}</${headingLevel}>
-      <img src="${p.image}" alt="${p.title}" loading="lazy">
+      <img src="${p.image}" alt="${p.title}" loading="lazy" class="project-image">
       <p>${p.description}</p>
   `;
 

@@ -1,13 +1,15 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel labore incidunt sit tempora non reprehenderit quidem distinctio. Libero quaerat iure laborum tempora voluptate, maxime itaque? Ipsam, nemo. Voluptate, magni aspernatur."
+        "title": "DSC 106 Project 2 (Earnest)",
+        "image": "../Images/Proj2e.png",
+        "year": "2025",
+        "description": "This came from health data collected from vitaldb and shows an earnest visualization of the distribution of the age of cancer patients separated by sex."
     },
     {
-        "title": "Odit quam explicabo deleniti!",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Nihil fuga sint laudantium ratione inventore minus distinctio consectetur impedit eaque vel, quam repellat asperiores quasi nobis. Aperiam est, modi beatae repellendus alias, temporibus libero cupiditate a possimus suscipit obcaecati."
+        "title": "DSC 106 Project 2 (Deceptive)",
+        "image": "../Images/Proj2d.png",
+        "year": "2025",
+        "description": "This came from health data collected from vitaldb and shows a deceptive visualization of the distribution of the age of cancer patients separated by sex."
     },
     {
         "title": "Cumque minima voluptatum magnam.",
