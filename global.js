@@ -164,15 +164,15 @@ for (let p of project) {
 
   // Create article element
   const article = document.createElement('article');
-  if (ARE_WE_HOME) {article.innerHTML = `
+  if (p.image.startsWith('http') || ARE_WE_HOME) {article.innerHTML = `
       <${headingLevel}>${p.title}</${headingLevel}>
       <img src="${p.image}" alt="${p.title}" loading="lazy" class="project-image">
       <p>${p.description}</p>`;}
-  
+      else{
       article.innerHTML = `
       <${headingLevel}>${p.title}</${headingLevel}>
       <img src="../${p.image}" alt="${p.title}" loading="lazy" class="project-image">
-      <p>${p.description}</p>`;
+      <p>${p.description}</p>`;}
   
 
   // Append article to container

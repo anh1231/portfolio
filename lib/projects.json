@@ -1,7 +1,7 @@
 [
     {
         "title": "DSC 106 Project 2 (Earnest)",
-        "image": "../Images/Proj2e.png",
+        "image": "Images/Proj2e.png",
         "year": "2025",
         "description": "This came from health data collected from vitaldb and shows an earnest visualization of the distribution of the age of cancer patients separated by sex."
     },
