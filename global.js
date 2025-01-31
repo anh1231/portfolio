@@ -123,3 +123,61 @@ for (let p of pages) {
     });
   });
   
+  export async function fetchJSON(url) {
+    try {
+        // Fetch the JSON file from the given URL
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch projects: ${response.statusText}`);
+      }
+      const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching or parsing JSON data:', error);
+        }
+}
+
+ export function renderProjects(project, containerElement, headingLevel = 'h2') {
+  // write javascript that will allow dynamic heading levels based on previous function
+  if (!(containerElement instanceof HTMLElement)) {
+    console.error('Invalid container element provided.');
+    return;
+}
+
+// Validate headingLevel
+  if (!/^h[1-6]$/.test(headingLevel)) {
+    console.warn('Invalid heading level provided. Defaulting to h2.');
+    headingLevel = 'h2';
+}
+  containerElement.innerHTML = '';
+
+  if (!Array.isArray(project) || project.length === 0) {
+    console.error('Invalid or empty project list.');
+    return;
+}
+
+for (let p of project) {
+  if (!p || typeof p !== 'object' || !p.title) {
+      console.warn('Skipping invalid project:', p);
+      return;
+  }
+
+  // Create article element
+  const article = document.createElement('article');
+
+  // Define article content dynamically
+  article.innerHTML = `
+      <${headingLevel}>${p.title}</${headingLevel}>
+      <img src="${p.image}" alt="${p.title}" loading="lazy">
+      <p>${p.description}</p>
+  `;
+
+  // Append article to container
+  containerElement.appendChild(article);
+};
+}
+
+export async function fetchGitHubData(username) {
+  // return statement here
+  return fetchJSON(`https://api.github.com/users/${username}`);
+}

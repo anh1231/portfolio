@@ -155,3 +155,37 @@ label.color-scheme {
 label.color-scheme select {
   font-family: inherit; /* Make the dropdown use the same font as the rest of the page */
 }
+
+/* Dropdown container */
+#profile-stats {
+  border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background: var(--bg-color);
+    width: 100%;
+    max-width: 500px;
+    display: none; /* Initially hidden */
+    color: var(--text-color);
+}
+
+/* Grid layout */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  text-align: center;
+  gap: 10px;
+}
+
+/* Titles (dt) on first row */
+.stats-grid dt {
+  font-weight: bold;
+  grid-row: 1;
+}
+
+/* Values (dd) on second row */
+.stats-grid dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: 1.2em;
+}
