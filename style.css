@@ -190,6 +190,11 @@ label.color-scheme select {
   font-size: 1.2em;
 }
 
+.stats {
+  /* Underline the title */
+  text-decoration: underline;
+}
+
 .project-image {
   width: 275px;
   height: 150px;
