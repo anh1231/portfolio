@@ -314,3 +314,12 @@ path {
   color: white;
   font-weight: bold;
 }
+
+.legend-item:hover {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.legend:hover .legend-item:not(:hover) {
+  opacity: 0.5;
+}

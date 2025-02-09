@@ -10,6 +10,7 @@ titleElement.textContent = `${projects.length} Projects`;
 
 let selectedIndex = -1; // -1 means no selection
 let query = ''; // Search query state
+let pie_slice = [];
 
 function renderPieChart(projectsGiven) {
     let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
@@ -51,6 +52,7 @@ function renderPieChart(projectsGiven) {
                         .style('opacity', 0.5); // Dim all slices
                     d3.select(this)
                         .style('opacity', 1); // Keep hovered slice bright
+                        pie_slice.push(this);
                 }
             })
             .on('mouseout', function () {
@@ -94,9 +96,44 @@ function renderPieChart(projectsGiven) {
             .attr('style', `--color:${colors(idx)}`)
             .attr('class', 'legend-item')
             .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
+            .on('mouseover', function (_, idx) {
+                if (selectedIndex === -1) { // ✅ Only apply hover effect when no slice is selected
+                    svg.selectAll('path')
+                        .style('opacity', 0.5); // Dim all slices
+        
+                    svg.selectAll(pie_slice[idx]) // ✅ Explicitly select the corresponding pie slice
+                        .filter((_, i) => i === idx)
+                        .style('opacity', 1);
+                }
+            })
+            .on('mouseout', function () {
+                if (selectedIndex === -1) { // ✅ Reset opacity when leaving hover
+                    svg.selectAll('path')
+                        .style('opacity', 1);
+                }
+            })
             .on('click', function () {
-                selectedIndex = selectedIndex === idx ? -1 : idx;
+                selectedIndex = selectedIndex === idx ? -1 : idx; // Toggle selection
+
                 let selectedYear = selectedIndex !== -1 ? data[selectedIndex].label.toString() : null;
+                
+                svg.selectAll('path')
+                    .attr('class', (_, i) => (i === selectedIndex ? 'selected' : ''))
+                    .style('fill', (_, i) => (i === selectedIndex ? 'var(--color)' : colors(i)))
+                    .style('opacity', function(_, idx) {
+                        if (selectedIndex === -1) {
+                            return null; // ✅ Reset opacity for all slices when deselected
+                        }
+                        return idx === selectedIndex ? 1 : 0.3; // ✅ Dim other slices when one is selected
+                    });
+
+                // Update legend selection
+                legend.selectAll('li')
+                    .classed('selected', false)
+                    .filter((_, i) => i === selectedIndex)
+                    .classed('selected', true);
+                
+                
                 updateFilteredProjects(selectedYear);
             });
     });
