@@ -45,31 +45,42 @@ function renderPieChart(projectsGiven) {
             .attr('d', arcGenerator(d))
             .attr('fill', colors(idx))
             .attr('class', 'pie-slice')
-            .on('mouseover', function () {
-                if (selectedIndex === -1) { // Only fade if no selection
-                    d3.selectAll('.pie-slice').style('opacity', 0.5);
-                    d3.select(this).style('opacity', 1);
+            .on('mouseover', function (_, idx) {
+                if (selectedIndex === -1) { // ✅ Only apply hover effect when no slice is selected
+                    svg.selectAll('path')
+                        .style('opacity', 0.5); // Dim all slices
+                    d3.select(this)
+                        .style('opacity', 1); // Keep hovered slice bright
                 }
             })
             .on('mouseout', function () {
-                if (selectedIndex === -1) {
-                    d3.selectAll('.pie-slice').style('opacity', 1);
+                if (selectedIndex === -1) { // ✅ Reset opacity when leaving hover
+                    svg.selectAll('path')
+                        .style('opacity', 1);
                 }
             })
             .on('click', function () {
                 selectedIndex = selectedIndex === idx ? -1 : idx; // Toggle selection
+
                 let selectedYear = selectedIndex !== -1 ? data[selectedIndex].label.toString() : null;
+                
                 svg.selectAll('path')
                     .attr('class', (_, i) => (i === selectedIndex ? 'selected' : ''))
                     .style('fill', (_, i) => (i === selectedIndex ? 'var(--color)' : colors(i)))
-                    .style('opacity', (_, i) => (selectedIndex === -1 || i === selectedIndex) ? 1 : 0.3); // Dim others
+                    .style('opacity', function(_, idx) {
+                        if (selectedIndex === -1) {
+                            return null; // ✅ Reset opacity for all slices when deselected
+                        }
+                        return idx === selectedIndex ? 1 : 0.3; // ✅ Dim other slices when one is selected
+                    });
 
                 // Update legend selection
                 legend.selectAll('li')
                     .classed('selected', false)
                     .filter((_, i) => i === selectedIndex)
                     .classed('selected', true);
-
+                
+                
                 updateFilteredProjects(selectedYear);
             });
     });

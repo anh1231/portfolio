@@ -281,6 +281,12 @@ label.color-scheme select {
   flex: 1;
 }
 
+&:has(path:hover) {
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
+
 svg:has(path:hover) path:not(:hover) {
   opacity: 0.5;
 }
@@ -293,12 +299,14 @@ path {
 
 .selected {
   --color: oklch(60% 45% 0) !important;
+  &:is(path) {
+    fill: var(--color);
+  }
 }
 
 /* Change color of selected wedge */
 .selected:is(path) {
   fill: var(--color);
-  opacity: 1 !important; /* Ensure selection stays fully visible */
 }
 
 .selected:is(li) {
