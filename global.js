@@ -137,48 +137,54 @@ for (let p of pages) {
         }
 }
 
- export function renderProjects(project, containerElement, headingLevel = 'h2') {
-  // write javascript that will allow dynamic heading levels based on previous function
+export function renderProjects(project, containerElement, headingLevel = 'h2') {
+  // Ensure the container element is valid
   if (!(containerElement instanceof HTMLElement)) {
-    console.error('Invalid container element provided.');
-    return;
-}
-
-// Validate headingLevel
-  if (!/^h[1-6]$/.test(headingLevel)) {
-    console.warn('Invalid heading level provided. Defaulting to h2.');
-    headingLevel = 'h2';
-}
-  containerElement.innerHTML = '';
-
-  if (!Array.isArray(project) || project.length === 0) {
-    console.error('Invalid or empty project list.');
-    return;
-}
-
-for (let p of project) {
-  if (!p || typeof p !== 'object' || !p.title) {
-      console.warn('Skipping invalid project:', p);
+      console.error('Invalid container element provided.');
       return;
   }
 
-  // Create article element
-  const article = document.createElement('article');
-  if (p.image.startsWith('http') || ARE_WE_HOME) {article.innerHTML = `
-      <${headingLevel}>${p.title}</${headingLevel}>
-      <img src="${p.image}" alt="${p.title}" loading="lazy" class="project-image">
-      <p>${p.description}</p>`;}
-      else{
-      article.innerHTML = `
-      <${headingLevel}>${p.title}</${headingLevel}>
-      <img src="../${p.image}" alt="${p.title}" loading="lazy" class="project-image">
-      <p>${p.description}</p>`;}
-  
+  // Validate headingLevel
+  if (!/^h[1-6]$/.test(headingLevel)) {
+      console.warn('Invalid heading level provided. Defaulting to h2.');
+      headingLevel = 'h2';
+  }
 
-  // Append article to container
-  containerElement.appendChild(article);
-};
+  // Clear the container before rendering
+  containerElement.innerHTML = '';
+
+  // Ensure project is a valid array
+  if (!Array.isArray(project) || project.length === 0) {
+      console.error('Invalid or empty project list.');
+      return;
+  }
+
+  for (let p of project) {
+      if (!p || typeof p !== 'object' || !p.title) {
+          console.warn('Skipping invalid project:', p);
+          return;
+      }
+
+      // Create article element
+      const article = document.createElement('article');
+
+      // Construct inner HTML dynamically, including year
+      let projectHTML = `
+          <${headingLevel}>${p.title}</${headingLevel}>
+          <img src="${p.image.startsWith('http') || ARE_WE_HOME ? p.image : `../${p.image}`}" 
+               alt="${p.title}" loading="lazy" class="project-image">
+          <div class="project-details">
+              <p>${p.description}</p>
+              <span class="project-year">Year: ${p.year || 'N/A'}</span>
+          </div>`;
+
+      article.innerHTML = projectHTML;
+
+      // Append article to container
+      containerElement.appendChild(article);
+  }
 }
+
 
 export async function fetchGitHubData(username) {
   // return statement here
