@@ -13,5 +13,26 @@
   <script src="main.js" type="module"></script>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <div id="stats"></div>
+
+  <h2>Commits by time of day</h2>
+  <div id="chart"></div>
+
+  <dl id="commit-tooltip" class="info tooltip">
+    <dt>Commit</dt>
+    <dd>
+      <a href="" id="commit-link" target="_blank"></a>
+    </dd>
+  
+    <dt>Date</dt>
+    <dd id="commit-date"></dd>
+  
+    <!-- Add: Time, author, lines edited -->
+    <dt>Time</dt>
+    <dd id="commit-time"></dd>
+  </dl>
+  
+  <p id="selection-count">No commits selected</p>
+  <dl id="language-breakdown" class="stats"></dl>
+  
 </body>
 </html>
