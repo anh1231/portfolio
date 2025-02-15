@@ -19,6 +19,7 @@ function $$(selector, context = document) {
     { url: 'resume/index.html', title: 'CV' },
     { url: 'projects/index.html', title: 'Projects' },
     { url: 'contact/index.html', title: 'Contact' },
+    {url: 'meta/index.html', title: 'Meta'},
     { url: 'https://github.com/anh1231/portfolio', title: 'Github' },
   ];
 
